@@ -15,6 +15,8 @@ class AdminUserSeeder extends Seeder
     public function run()
     {
         User::firstOrCreate([
+            'email' => config('admin.email')
+        ], [
             'name' => 'admin',
             'email' => config('admin.email'),
             'password' => config('admin.password')

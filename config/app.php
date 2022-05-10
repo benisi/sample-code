@@ -212,4 +212,5 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'external_blog_url' => env('EXTERNAL_BLOG_URL', 'https://sq1-api-test.herokuapp.com/posts')
 ];
