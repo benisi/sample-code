@@ -2,15 +2,20 @@
 
 namespace Tests\Feature;
 
+use App\Models\Post;
 use App\Models\User;
 use App\Services\Dto\PostDto;
 use App\Services\ExternalBlogService;
 use Database\Seeders\AdminUserSeeder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Inertia\Testing\AssertableInertia;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
 class PostControllerTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function test_can_pull_post_from_external_blog()
     {
         $this->seed(AdminUserSeeder::class);
@@ -36,5 +41,19 @@ class PostControllerTest extends TestCase
         ]);
 
         $this->assertDatabaseCount('posts', 1);
+    }
+
+    public function test_can_view_all_post()
+    {
+        $user = User::factory()->create();
+        Post::factory()->count(20)->for($user)->create(); 
+        $this->get('/')
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('Post/AllPost')
+                ->where('posts.per_page', 10)
+                ->where('posts.total', 20)
+                ->has('posts.data', 10)
+                ->where('posts.data.0.user', $user)
+            );
     }
 }
