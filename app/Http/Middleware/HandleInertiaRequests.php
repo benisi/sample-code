@@ -41,6 +41,9 @@ class HandleInertiaRequests extends Middleware
             'ziggy' => function () {
                 return (new Ziggy)->toArray();
             },
+            'app' => [
+                'name' => config('app.name')
+            ]
         ]);
     }
 }

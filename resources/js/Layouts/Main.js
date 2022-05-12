@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link, Head } from "@inertiajs/inertia-react";
 import DropDown from "@/Components/common/DropDown";
 import { ChevronDown } from "lucide-react";
+import ApplicationLogo from "@/Components/ApplicationLogo";
 
 export default function Main({ children }) {
-    const auth = children.props.auth;
-    const title = children.props.title;
+    const { auth, title } = children.props;
+
     const [showMenuOptions, setShowMenuOptions] = useState(false);
     return (
         <>
@@ -13,9 +14,7 @@ export default function Main({ children }) {
             <div className="pb-16 bg-gray-100 flex justify-center min-h-screen">
                 <div className="md:px-16 px-4 py-4 box bottom flex justify-between bg-white fixed w-full shadow-md">
                     <div>
-                        <h1 className="text-violet-800 text-2xl font-bold">
-                            <Link href={route("home")}>BloGGG</Link>
-                        </h1>
+                       <ApplicationLogo /> 
                     </div>
                     <div>
                         {auth?.user ? (
@@ -79,7 +78,9 @@ export default function Main({ children }) {
                     </div>
                 </div>
 
-                <div className="md:w-2/5 w-full mt-16 mx-4 md:mx-0">{children}</div>
+                <div className="md:w-2/5 w-full mt-16 mx-4 md:mx-0">
+                    {children}
+                </div>
             </div>
         </>
     );

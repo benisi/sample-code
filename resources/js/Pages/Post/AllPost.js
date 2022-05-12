@@ -127,6 +127,6 @@ const AllPost = ({ posts, sortBy, auth }) => {
     );
 };
 
-AllPost.layout = (page) => <Main children={page} title="Posts" />;
+AllPost.layout = (page) => <Main children={page} />;
 
 export default AllPost;
