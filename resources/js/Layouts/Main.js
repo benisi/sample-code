@@ -18,7 +18,7 @@ export default function Main({ children }) {
                         </h1>
                     </div>
                     <div>
-                        {auth.user ? (
+                        {auth?.user ? (
                             <div>
                                 <Link
                                     className="text-sm flex items-center"

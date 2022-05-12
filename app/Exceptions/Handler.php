@@ -2,11 +2,14 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\Traits\InertiaExceptionHandler;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
 class Handler extends ExceptionHandler
 {
+    use InertiaExceptionHandler
+    ;
     /**
      * A list of exception types with their corresponding custom log levels.
      *
