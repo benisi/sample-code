@@ -24,6 +24,7 @@ function useOutsideDetector(
 
 const OutsideDetector = (props) => {
     const wrapperRef = useRef(null);
+    
     useOutsideDetector(wrapperRef, props.handleClose);
 
     return <div ref={wrapperRef}>{props.children}</div>;

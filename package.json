@@ -29,8 +29,10 @@
         "tailwindcss": "^3.0.18"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.5",
         "date-fns": "^2.28.0",
         "lucide-react": "^0.44.0",
-        "react-infinite-scroll-component": "^6.1.0"
+        "react-infinite-scroll-component": "^6.1.0",
+        "react-popper": "^2.3.0"
     }
 }

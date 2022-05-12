@@ -13,7 +13,7 @@ Interface SortableFilterInterface {
     public function sort($builder, $value): Builder;
 
      /**
-     * get the sort direction, this give you the ability to set a default sort
+     * get the sort direction, this gives you the ability to set a default sort
      * 
      * @param string $value
      * 
