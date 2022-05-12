@@ -10,7 +10,7 @@ export default function Main({ children }) {
         <>
             <Head title="Home" />
             <div className="pb-16 bg-gray-100 flex justify-center min-h-screen">
-                <div className="px-16 py-4 box bottom flex justify-between bg-white fixed w-full shadow-md">
+                <div className="md:px-16 px-4 py-4 box bottom flex justify-between bg-white fixed w-full shadow-md">
                     <div>
                         <h1 className="text-violet-800 text-2xl font-bold">
                             <Link href={route("home")}>BloGGG</Link>
@@ -20,13 +20,12 @@ export default function Main({ children }) {
                         {auth.user ? (
                             <div>
                                 <Link
-                                    href={route("dashboard")}
                                     className="text-sm flex items-center"
                                     onClick={() =>
                                         setShowMenuOptions(!showMenuOptions)
                                     }
                                 >
-                                    {auth.user.name} <ChevronDown size={12} />
+                                    {auth.user.name} <ChevronDown size={15} />
                                 </Link>
 
                                 {showMenuOptions && (
@@ -36,14 +35,25 @@ export default function Main({ children }) {
                                         }
                                     >
                                         <ol className="py-2 px-4">
-                                            <Link
-                                                href={route("logout")}
-                                                method="post"
-                                                as="button"
-                                                className="underline text-sm text-gray-600 hover:text-gray-900"
-                                            >
-                                                Log Out
-                                            </Link>
+                                            <li>
+                                                <Link
+                                                    href={route("dashboard")}
+                                                    as="button"
+                                                    className="underline text-sm text-gray-600 hover:text-gray-900"
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    href={route("logout")}
+                                                    method="post"
+                                                    as="button"
+                                                    className="underline text-sm text-gray-600 hover:text-gray-900 mt-2"
+                                                >
+                                                    Log Out
+                                                </Link>
+                                            </li>
                                         </ol>
                                     </DropDown>
                                 )}
@@ -68,7 +78,7 @@ export default function Main({ children }) {
                     </div>
                 </div>
 
-                <div className="w-2/5 mt-16">{children}</div>
+                <div className="md:w-2/5 w-full mt-16 mx-4 md:mx-0">{children}</div>
             </div>
         </>
     );
