@@ -101,10 +101,11 @@ class PostControllerTest extends TestCase
                     ->component('Post/AllPost')
                     ->has('posts.data', 3)
                     ->where(
-                        'posts.data', function (Collection $posts) use ($user) {
+                        'posts.data',
+                        function (Collection $posts) use ($user) {
                             $containOnlyUserPost = true;
-                            $posts->each(function($post) use (&$containOnlyUserPost, $user){
-                                if($post['user']['id'] !== $user->id){
+                            $posts->each(function ($post) use (&$containOnlyUserPost, $user) {
+                                if ($post['user']['id'] !== $user->id) {
                                     $containOnlyUserPost = false;
                                 }
                             });
@@ -113,5 +114,21 @@ class PostControllerTest extends TestCase
                         }
                     )
             );
+    }
+
+    public function test_user_can_create_a_post()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user)->post('/posts', [
+            'title' => 'test',
+            'description' => 'testing'
+        ])->assertRedirect('/dashboard')
+            ->assertSessionHasNoErrors();
+    }
+
+    public function test_user_cant_create_a_post_with_wrong_data()
+    {
+        $user = User::factory()->create();
+        $this->actingAs($user)->post('/posts', [])->assertSessionHasErrors(['title', 'description']);
     }
 }

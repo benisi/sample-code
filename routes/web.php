@@ -14,9 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostController::class,'allPost']);
+Route::get('/', [PostController::class, 'allPost'])->name('home');
 
-Route::get('/dashboard', [PostController::class,'userPost'])
-->middleware(['auth', 'verified'])->name('dashboard');
+Route::group(['middleware' => ['auth', 'verified']], function () {
+    Route::get('/dashboard', [PostController::class, 'userPost'])->name('dashboard');
+    Route::post('/posts', [PostController::class, 'storePost'])->name('storePost');
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

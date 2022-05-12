@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import { Link, Head } from "@inertiajs/inertia-react";
 import DropDown from "@/Components/common/DropDown";
+import { ChevronDown } from "lucide-react";
 
 export default function Main({ children }) {
     const auth = children.props.auth;
     const [showMenuOptions, setShowMenuOptions] = useState(false);
     return (
         <>
-            <Head title="Welcome" />
+            <Head title="Home" />
             <div className="pb-16 bg-gray-100 flex justify-center min-h-screen">
-                <div className="px-16 py-4 box bottom flex justify-between bg-white fixed w-full">
+                <div className="px-16 py-4 box bottom flex justify-between bg-white fixed w-full shadow-md">
                     <div>
-                        <h1>BloGGG</h1>
+                        <h1 className="text-violet-800 text-2xl font-bold">
+                            <Link href={route("home")}>BloGGG</Link>
+                        </h1>
                     </div>
                     <div>
                         {auth.user ? (
                             <div>
                                 <Link
                                     href={route("dashboard")}
-                                    className="text-sm"
+                                    className="text-sm flex items-center"
                                     onClick={() =>
                                         setShowMenuOptions(!showMenuOptions)
                                     }
                                 >
-                                    Dashboard
+                                    {auth.user.name} <ChevronDown size={12} />
                                 </Link>
 
                                 {showMenuOptions && (
@@ -47,13 +50,16 @@ export default function Main({ children }) {
                             </div>
                         ) : (
                             <>
-                                <Link href={route("login")} className="text-sm">
+                                <Link
+                                    href={route("login")}
+                                    className="text-semibold text-violet-800"
+                                >
                                     Log in
                                 </Link>
 
                                 <Link
                                     href={route("register")}
-                                    className="ml-4 text-sm"
+                                    className="ml-4 text-sm text-white bg-violet-800 px-4 py-2 rounded cursor-pointer"
                                 >
                                     Register
                                 </Link>
