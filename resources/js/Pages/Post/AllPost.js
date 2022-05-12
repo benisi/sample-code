@@ -23,7 +23,7 @@ const AllPost = ({ posts, sortBy }) => {
     const appendSortToUrl = (url, selectedSort = null) => {
         const sortValue = selectedSort ||sortedBy
         const urlInstance = new URL(url);
-        urlInstance.searchParams.append("sort_by", sortValue);
+        urlInstance.searchParams.append("sort_publication_date", sortValue);
         return urlInstance
     };
 

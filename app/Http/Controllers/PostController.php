@@ -11,8 +11,8 @@ class PostController extends Controller
     public function allPost(Request $request)
     {
         return Inertia::render('Post/AllPost', [
-            'posts' => Post::with('user')->latest('publication_date')->paginate(10),
-            'sortBy' => $request->query('sort_by', 'recent') 
+            'posts' => Post::sort($request)->with('user')->paginate(10),
+            'sortBy' => $request->query('sort_publication_date', 'recent') 
         ]);
     }
 }

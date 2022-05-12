@@ -19,7 +19,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->text(10),
             'description' => $this->faker->text(),
-            'publication_date' => now()->subMinutes(rand(0, 20))
+            'publication_date' => now()->toDateTimeString()
         ];
     }
 }

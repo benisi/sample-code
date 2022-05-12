@@ -56,4 +56,18 @@ class PostControllerTest extends TestCase
                 ->where('posts.data.0.user', $user)
             );
     }
+
+    public function test_can_view_all_post_sorted_by_oldest()
+    {
+        $user = User::factory()->create();
+        $oldestPost = Post::factory()->forUser()->create([
+            'publication_date' => now()->subHours(5)->toDateTimeString()
+        ]);
+        Post::factory()->count(10)->for($user)->create(); 
+        $this->get('/?sort_publication_date=oldest')
+            ->assertInertia(fn (AssertableInertia $page) => $page
+                ->component('Post/AllPost')
+                ->where('posts.data.0', $oldestPost->load('user'))
+            );
+    }
 }
