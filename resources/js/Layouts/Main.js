@@ -5,10 +5,11 @@ import { ChevronDown } from "lucide-react";
 
 export default function Main({ children }) {
     const auth = children.props.auth;
+    const title = children.props.title;
     const [showMenuOptions, setShowMenuOptions] = useState(false);
     return (
         <>
-            <Head title="Home" />
+            <Head title={title} />
             <div className="pb-16 bg-gray-100 flex justify-center min-h-screen">
                 <div className="md:px-16 px-4 py-4 box bottom flex justify-between bg-white fixed w-full shadow-md">
                     <div>
