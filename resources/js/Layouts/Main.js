@@ -5,7 +5,7 @@ export default function Main({ auth, children }) {
     return (
         <>
             <Head title="Welcome" />
-            <div className="pb-16 bg-gray-100 flex justify-center">
+            <div className="pb-16 bg-gray-100 flex justify-center min-h-screen">
                 <div className="px-16 py-4 box bottom flex justify-between bg-white fixed w-full">
                     <div><h1>BloGGG</h1></div>
                     <div>
