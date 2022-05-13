@@ -18,7 +18,7 @@ visit your app at http://localhost/ if you want to change the port that serves y
 
 #### Without sails
 
-if you want to run your app without sails kindly follow the about instructions replacing `./vendor/bin/sail` with `php`, kindly ignore running `./vendor/bin/sail up`
+if you want to run your app without sails kindly follow the above instructions replacing `./vendor/bin/sail` with `php`, kindly ignore running `./vendor/bin/sail up`
 
 #### Running test
 To run the test cases run `./vendor/bin/sail test` or `./vendor/bin/phpunit` (if you are not using sails)
