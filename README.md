@@ -9,10 +9,10 @@ It is advisable to use Redis as your session, queue and cache driver so that you
 
 #### Migrating Data
 
-To migrate data type `vendor/bin/sail artisan migrate` and `vendor/bin/sail artisan db:seed`, you can specify the admin credentials by add `ADMIN_EMAIL` and `ADMIN_PASSWORD` to your .env file
+To migrate data type `vendor/bin/sail artisan migrate` and `vendor/bin/sail artisan db:seed`, you can specify the admin credentials by adding `ADMIN_EMAIL` and `ADMIN_PASSWORD` to your .env file
 
 #### Polling post from external blog
-For the sake of scalability we used a scheduler to poll post data from our client external blog. To poll data kindly run the command `vendor/bin/sail artisan schedule:work`, this will start a worker that poll schedule every one hour. You can change the url to poll from by changing `EXTERNAL_BLOG_URL` value in your .env file
+For the sake of scalability we used a scheduler to poll post data from our client external blog. To poll data kindly run the command `vendor/bin/sail artisan schedule:work`, this will start a worker that poll post from our client blog every one hour you can configure the cron on the `console kernel file`. You can change the url to poll from by changing `EXTERNAL_BLOG_URL` value in your .env file
 
 visit your app at http://localhost/ if you want to change the port that serves your application add `APP_PORT` to your .env specifying the new port
 
