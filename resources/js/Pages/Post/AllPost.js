@@ -100,7 +100,12 @@ const AllPost = ({ posts, sortBy, auth }) => {
                 showCreatePostModal={showCreatePostModal}
                 closeModal={closeModal}
             />
-            <div>{renderPost}</div>
+            <div>{posts.data.length > 0 && renderPost}</div>
+            {posts.data.length === 0 && (
+                <div className="flex flex-col justify-center items-center mt-16">
+                    <p>No posts available at the moment</p>
+                </div>
+            )}
             <div
                 className={`flex ${
                     posts.prev_page_url ? "justify-between" : "justify-end"
